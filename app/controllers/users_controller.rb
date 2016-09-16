@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   def index
     helpers.current_user
+    helpers.posts
   end
 
   def new

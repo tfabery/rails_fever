@@ -3,7 +3,7 @@ require 'rails_helper'
 describe 'Log in/out process' do
   it "logs in with correct information" do
     visit log_in_path
-    user = User.create(username: 'admin', password: 'password')
+    user = FactoryGirl.create(:user)
     fill_in 'username', :with => 'admin'
     fill_in 'password', :with => 'password'
     click_on 'Log in'
@@ -20,7 +20,7 @@ describe 'Log in/out process' do
 
   it "Log out successfully" do
     visit log_in_path
-    user = User.create(username: 'admin', password: 'password')
+    user = FactoryGirl.create(:user)
     fill_in 'username', :with => 'admin'
     fill_in 'password', :with => 'password'
     click_on 'Log in'

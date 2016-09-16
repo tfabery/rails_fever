@@ -1,0 +1,21 @@
+<h1><%= @post.title %></h1>
+<h4>Author: <%= @post.user.username %></h4>
+<p>
+  <%= @post.content %>
+</p>
+
+<% if @current_user == @post.user %>
+<p><%= link_to "Edit", edit_post_path(@post) %></p>
+<p><%= link_to "Delete", post_path(@post), :data => {:confirm => "Are you sure?", :method => "delete"} %></p>
+<% end %>
+
+<% if @post.comments.any? %>
+  <% @post.comments.each do |comment| %>
+    <%= render "/comments/show", object: comment %>
+  <% end %>
+<% end %>
+
+<%=link_to "Add comment", new_post_comment_path(@post)%>
+
+<p><%= link_to "Home", root_path %></p>
+<p> You are signed in as: <%= @current_user.username %> </p>
