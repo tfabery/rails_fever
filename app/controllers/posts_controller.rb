@@ -1,8 +1,4 @@
 class PostsController < ApplicationController
-  def index
-    @posts = Post.all
-  end
-
   def show
     helpers.current_user
     @post = Post.find(params[:id])

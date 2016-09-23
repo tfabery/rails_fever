@@ -2,11 +2,11 @@ Rails.application.routes.draw do
   root to: 'users#index'
 
   resources :users do
-    resources :posts
+    resources :posts, except: [:index]
   end
 
   resources :posts do
-    resources :comments
+    resources :comments, except: [:show, :index]
   end
 
   get '/log-in' => 'sessions#new'

@@ -1,13 +1,4 @@
 class CommentsController < ApplicationController
-  def index
-    @comments = Comment.all
-  end
-
-  def show
-    helpers.current_post
-    @comment = Comment.find(params[:post_id])
-  end
-
   def new
     @post = Post.find(params[:post_id])
     @comment = Comment.new
