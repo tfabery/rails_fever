@@ -9,7 +9,7 @@ class CommentsController < ApplicationController
   end
 
   def new
-    @post = Post.find(params[:id])
+    @post = Post.find(params[:post_id])
     @comment = Comment.new
   end
 
@@ -20,7 +20,10 @@ class CommentsController < ApplicationController
     @comment.user_id = @current_user.id
     if @comment.save
       flash[:notice] = "Comment has been added"
-      redirect_to root_path
+      respond_to do |format|
+        format.html { redirect_to user_post_path(@post.user, @post) }
+        format.js
+      end
     else
       render :new
     end

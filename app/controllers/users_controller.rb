@@ -14,6 +14,7 @@ class UsersController < ApplicationController
       flash[:notice] = "Welcome to Fever!"
       redirect_to '/'
     else
+      flash[:alert] = "Please try again"
       redirect_to :back
     end
   end

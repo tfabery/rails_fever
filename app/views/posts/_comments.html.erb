@@ -1,0 +1,5 @@
+<% if @post.comments.any? %>
+  <% @post.comments.each do |comment| %>
+    <%= render "/comments/show", object: comment %>
+  <% end %>
+<% end %>

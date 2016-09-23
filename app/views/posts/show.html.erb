@@ -9,13 +9,12 @@
 <p><%= link_to "Delete", post_path(@post), :data => {:confirm => "Are you sure?", :method => "delete"} %></p>
 <% end %>
 
-<% if @post.comments.any? %>
-  <% @post.comments.each do |comment| %>
-    <%= render "/comments/show", object: comment %>
-  <% end %>
+<div id="comments">
+  <%= render 'comments' %>
+</div>
+
+<% if @current_user %>
+  <%=link_to "Add comment", new_post_comment_path(@post), id: 'new_post_comment_link', remote: true %>
 <% end %>
 
-<%=link_to "Add comment", new_post_comment_path(@post)%>
-
 <p><%= link_to "Home", root_path %></p>
-<p> You are signed in as: <%= @current_user.username %> </p>
