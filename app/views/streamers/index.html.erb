@@ -1,0 +1,15 @@
+<%= link_to 'new Pro Streamer', new_twitch_streamer_path %>
+<% if @streams %>
+  <% @streams.each do |stream| %>
+    <%= link_to twitch_streamer_path(stream) do %>
+      <div class="">
+        <div class="stream_logo">
+          <%= image_tag(stream.logo) %>
+        </div>
+        <p>
+          <%= stream.name %>
+        </p>
+      </div>
+    <% end %>
+  <% end %>
+<% end %>
