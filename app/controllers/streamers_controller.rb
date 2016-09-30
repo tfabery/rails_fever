@@ -11,9 +11,9 @@ class StreamersController < ApplicationController
   def create
     @streamer = Streamer.new(streamer_params)
     if @streamer.save
-      redirect_to root_path
+      redirect_to streamer_path
     else
-      redirect_to new_twitch_streamer_path
+      redirect_to new_streamer_path
     end
   end
 
@@ -23,6 +23,6 @@ class StreamersController < ApplicationController
 
 private
   def streamer_params
-    params.require(:twitch_streamer).permit(:name, :channel_name)
+    params.require(:streamer).permit(:name, :channel_name)
   end
 end
