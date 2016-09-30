@@ -1,0 +1,14 @@
+<div id="{PLAYER_DIV_ID}">
+</div>
+<%= link_to 'Home', streamers_path %>
+<script type="text/javascript">
+    var options = {
+        width: 854,
+        height: 480,
+        channel: '<%= @stream.channel_name  %>',
+        //video: "{VIDEO_ID}"
+    };
+    var player = new Twitch.Player("{PLAYER_DIV_ID}", options);
+    player.setVolume(0.5);
+    player.addEventListener(Twitch.Player.PAUSE, () => { console.log('Player is paused!'); });
+</script>
