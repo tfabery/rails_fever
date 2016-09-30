@@ -1,4 +1,5 @@
 <%= link_to 'new Pro Streamer', new_streamer_path %>
+<%= link_to 'Home', root_path %>
 <% if @streams %>
   <% @streams.each do |stream| %>
     <%= link_to streamer_path(stream) do %>
