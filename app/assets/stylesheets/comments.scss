@@ -1,0 +1,17 @@
+.comments {
+  margin: 1em 0 1em 0;
+  padding: 1em;
+  border: 0.2em solid #c3c5c9;
+
+  .comments {
+    margin-left: 2em;
+  }
+}
+
+.author {
+  font-weight: bold;
+}
+
+.created_at {
+  font-size: 0.7em;
+}

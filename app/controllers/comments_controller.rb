@@ -48,7 +48,14 @@ private
   end
 
   def find_commentable
-    @commentable, @post = Comment.find_by_id(params[:comment_id]), Post.find_by_id(Comment.find_by_id(params[:comment_id]).commentable_id) if params[:comment_id]
     @commentable = @post = Post.find_by_id(params[:post_id]) if params[:post_id]
+    if params[:comment_id]
+      @commentable = Comment.find_by_id(params[:comment_id])
+      comment = @commentable
+      while comment.commentable_type != "Post"
+        comment = Comment.find_by_id(comment.commentable_id)
+      end
+      @post = Post.find_by_id(comment.commentable_id)
+    end
   end
 end

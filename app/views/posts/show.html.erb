@@ -21,7 +21,7 @@
 <% end %>
 
 <div id="comments">
-  <%= render partial: 'comments/comment', collection: @post.comments.order(:created_at) %>
+  <%= render partial: 'comments/comment', collection: @post.comments.order(created_at: :asc) %>
 </div>
 
 <p><%= link_to "Home", root_path %></p>
