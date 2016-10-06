@@ -9,6 +9,10 @@ Rails.application.routes.draw do
     resources :comments, except: [:show, :index]
   end
 
+  resources :comments do
+    resources :comments, except: [:show, :index]
+  end
+
   resources :streamers
 
   get '/log-in' => 'sessions#new'

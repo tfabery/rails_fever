@@ -1,3 +1,1 @@
-$('form').remove();
-$('#new_post_comment_link').show();
-$('#comments').html('<%= j render comments %>');
+$('#comments').html('<%= j render partial: "comments/comment", collection: @post.comments %>');

@@ -1,0 +1,14 @@
+<h4>Author: <%= comment.user.username %></h4>
+<p>
+  <%= comment.content %>
+</p>
+
+<% if @current_user == comment.user %>
+<% end %>
+<% if @current_user %>
+  <p><%=link_to "reply", new_comment_comment_path(comment), id: ('comment' + comment.id.to_s + '_link'), remote: true %></p>
+<% end %>
+
+<div class="replies">
+  <%= render partial: 'comments/comment', collection: comment.comments.order(:created_at) %>
+</div>

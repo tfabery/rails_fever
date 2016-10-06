@@ -1,7 +1,9 @@
 class PostsController < ApplicationController
+  before_action :find_commentable, only: [:show]
   def show
     helpers.current_user
-    @post = Post.find(params[:id])
+    @post = @commentable
+    @comment = Comment.new
   end
 
   def new
@@ -44,5 +46,10 @@ class PostsController < ApplicationController
 private
   def post_params
     params.require(:post).permit(:title, :content, :user_id)
+  end
+
+  def find_commentable
+    @commentable = Post.find_by_id(Comment.find_by_id(params[:comment_id]).post_id) if params[:comment_id]
+    @commentable = Post.find_by_id(params[:id]) if params[:id]
   end
 end
