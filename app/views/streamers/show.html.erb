@@ -1,14 +1,25 @@
-<div id="{PLAYER_DIV_ID}">
+<div class="stream">
+  <div id="{PLAYER_DIV_ID}">
+  </div>
+  <div id="chat">
+    <iframe frameborder="0"
+    scrolling="no"
+    id="chat_embed"
+    src="http://www.twitch.tv/<%= @stream.channel_name  %>/chat"
+    height="480"
+    width="350">
+    </iframe>
+  </div>
+  <script type="text/javascript">
+  var options = {
+    width: 854,
+    height: 480,
+    channel: '<%= @stream.channel_name  %>',
+    //video: "{VIDEO_ID}"
+  };
+  var player = new Twitch.Player("{PLAYER_DIV_ID}", options);
+  player.setVolume(0.5);
+  player.addEventListener(Twitch.Player.PAUSE, () => { console.log('Player is paused!'); });
+  </script>
 </div>
 <%= link_to 'Back', streamers_path %>
-<script type="text/javascript">
-    var options = {
-        width: 854,
-        height: 480,
-        channel: '<%= @stream.channel_name  %>',
-        //video: "{VIDEO_ID}"
-    };
-    var player = new Twitch.Player("{PLAYER_DIV_ID}", options);
-    player.setVolume(0.5);
-    player.addEventListener(Twitch.Player.PAUSE, () => { console.log('Player is paused!'); });
-</script>

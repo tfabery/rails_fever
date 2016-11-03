@@ -1,16 +1,9 @@
 <%= link_to 'new Pro Streamer', new_streamer_path %>
 <%= link_to 'Home', root_path %>
-<% if @streams %>
-  <% @streams.each do |stream| %>
-    <%= link_to streamer_path(stream) do %>
-      <div class="">
-        <div class="stream_logo">
-          <%= image_tag(stream.logo) %>
-        </div>
-        <p>
-          <%= stream.name %>
-        </p>
-      </div>
+<div class="stream">
+  <% if @streams %>
+    <% @streams.each do |stream| %>
+      <%= render 'list', object: stream%>
     <% end %>
   <% end %>
-<% end %>
+</div>

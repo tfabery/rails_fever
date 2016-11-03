@@ -11,7 +11,7 @@ class StreamersController < ApplicationController
   def create
     @streamer = Streamer.new(streamer_params)
     if @streamer.save
-      redirect_to streamer_path
+      redirect_to streamers_path
     else
       redirect_to new_streamer_path
     end
