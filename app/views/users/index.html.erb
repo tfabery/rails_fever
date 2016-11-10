@@ -1,19 +1,5 @@
-<div class="notice">
-  <%= flash[:notice] %>
-</div>
-<% if @current_user %>
-  <%= button_to 'Log out', log_out_path, method: :get %>
-<% else %>
-  <%= button_to 'Log in', log_in_path, method: :get %>
-  <%= button_to 'Sign up', new_user_path, method: :get %>
-<% end %>
-
 <ul>
-  <% @all_posts.each do |post| %>
+  <% @posts.each do |post| %>
   <li><%= link_to post.title, user_post_path(post.user, post) %></li>
   <% end %>
 </ul>
-<% if @current_user %>
-  <%= link_to "New Post", new_user_post_path(@current_user) %>
-<% end %>
-<%= link_to "Streams", streamers_path %>

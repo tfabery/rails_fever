@@ -1,23 +1,20 @@
-class User < ActiveRecord::Base
-  attr_accessor :password
-  has_many :posts
-  has_many :comments
-  validates_confirmation_of :password
-  validates_presence_of :username
+class User < ApplicationRecord
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :trackable, :validatable
+ validates :username, presence: true, uniqueness: { case_sensitive: false }
+ attr_accessor :login
 
-  before_save :encrypt_password
+ has_many :posts
+ has_many :comments
 
-  def encrypt_password
-    self.password_salt = BCrypt::Engine.generate_salt
-    self.password_hash = BCrypt::Engine.hash_secret(password, password_salt)
-  end
-
-  def self.authenticate(username, password)
-    user = User.where(username: username).first
-    if user && user.password_hash == BCrypt::Engine.hash_secret(password, user.password_salt)
-      user
-    else
-      nil
+ def self.find_for_database_authentication(warden_conditions)
+    conditions = warden_conditions.dup
+    if login = conditions.delete(:login)
+      where(conditions.to_hash).where(["lower(username) = :value OR lower(email) = :value", { :value => login.downcase }]).first
+    elsif conditions.has_key?(:username) || conditions.has_key?(:email)
+      where(conditions.to_hash).first
     end
   end
 end

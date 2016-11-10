@@ -1,7 +1,13 @@
 class PostsController < ApplicationController
   before_action :find_commentable, only: [:show]
+
+  def index
+    @posts = Post.all
+    @user = current_user
+  end
+
   def show
-    helpers.current_user
+    @user = current_user
     @post = @commentable
     @comment = Comment.new
   end

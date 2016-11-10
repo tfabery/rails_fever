@@ -10,6 +10,23 @@
   </head>
 
   <body>
-    <%= yield %>
+    <%= render 'layouts/navbar' %>
+    <div class="container" align="middle">
+      <% flash.each do |key, value| %>
+        <%= content_tag(:p, value, class: key) %>
+      <% end %>
+    </div>
+
+    <div class="container">
+      <%= yield %>
+    </div>
+
+    <footer class="footer">
+      <div class="container">
+        <p class="text_muted">
+          Tony Fabery
+        </p>
+      </div>
+    </footer>
   </body>
 </html>

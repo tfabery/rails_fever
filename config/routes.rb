@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  root to: 'users#index'
+  devise_for :users
+  root to: 'posts#index'
 
   resources :users do
     resources :posts, except: [:index]
@@ -14,8 +15,4 @@ Rails.application.routes.draw do
   end
 
   resources :streamers
-
-  get '/log-in' => 'sessions#new'
-  post '/log-in' => 'sessions#create'
-  get '/log-out' => 'sessions#destroy', as: :log_out
 end

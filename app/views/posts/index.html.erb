@@ -1,0 +1,11 @@
+<div class="row">
+  <% @posts.each do |post| %>
+    <%= link_to(post_path(post)) do %>
+      <%= render "tile", post: post %>
+    <% end %>
+  <% end %>
+</div>
+
+<% if @user %>
+  <%= button_to "New Post", new_user_post_path(@user), method: :get %>
+<% end %>

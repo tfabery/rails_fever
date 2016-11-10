@@ -10,13 +10,58 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- */
- //= require comments
- //= require stream
- .alert {
-   background-color: rgba(1000, 0, 0, 0.4);
- }
+ /*
+  *= require_tree .
+  *= require_self
+  */
 
- .notice {
-   background-color: rgba(0, 1000, 100, 0.4);
- }
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+html {
+  min-height: 100%;
+}
+
+body {
+  background-color: #ECF0F1;
+
+  a {
+    text-decoration: none;
+  }
+}
+
+.navbar-inverse {
+  background-color: #2C3E50;
+
+  .navbar-header {
+    .navbar-toggle {
+      background-color: #E74C3C;
+      color: #E74C3C;
+      border-color: #2C3E50;
+    }
+  }
+}
+
+.alert {
+  background-color: #E74C3C;
+  color: #ECF0F1;
+}
+
+.notice {
+  background-color: #3498DB;
+  color: #ECF0F1;
+}
+
+.footer {
+  background-color: #2C3E50;
+  text-align: center;
+  height: 5em;
+}
+
+.tile {
+
+}
+
+.tile-title {
+  font-size: 4em;
+}

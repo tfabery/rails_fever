@@ -1,10 +1,10 @@
-<%= link_to streamer_path(object) do %>
-  <div class="">
+<div class="col-md-4">
+  <%= link_to streamer_path(object) do %>
     <div class="stream_logo">
       <%= image_tag(object.logo) %>
     </div>
     <p>
       <%= object.name %>
     </p>
-  </div>
-<% end %>
+    <% end %>
+</div>
