@@ -24,6 +24,7 @@ class PostsController < ApplicationController
       flash[:notice] = "Post has been added"
       redirect_to root_path
     else
+      flash[:alert] = @post.errors.full_messages.join(', ')
       render :new
     end
   end
