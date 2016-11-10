@@ -7,9 +7,9 @@
     <%= comment.content %>
   </p>
 
-  <% if @current_user == comment.user %>
+  <% if @user == comment.user %>
   <% end %>
-  <% if @current_user %>
+  <% if @user %>
     <p><%=link_to "reply", new_comment_comment_path(comment), id: ('comment' + comment.id.to_s + '_link'), remote: true %></p>
   <% end %>
 

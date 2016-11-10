@@ -6,9 +6,9 @@ before_action :find_commentable
   end
 
   def create
-    helpers.current_user
+    @user = current_user
     @comment = @commentable.comments.new(comment_params)
-    @comment.user_id = @current_user.id
+    @comment.user_id = @user.id
     if @comment.save
       flash[:notice] = "Comment has been added"
       respond_to do |format|
@@ -16,7 +16,8 @@ before_action :find_commentable
         format.js
       end
     else
-      render :new
+      flash[:alert] = @comment.errors.full_messages.join(', ')
+      redirect_to post_url(@post)
     end
   end
 

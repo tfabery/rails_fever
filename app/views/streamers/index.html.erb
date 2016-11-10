@@ -1,6 +1,6 @@
 <%= link_to 'new Pro Streamer', new_streamer_path %>
 
-<div class="row">
+<div class="row" align="middle">
   <% if @streams %>
     <% @streams.each do |stream| %>
       <%= render 'list', object: stream%>

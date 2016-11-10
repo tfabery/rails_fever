@@ -1,5 +1,11 @@
 <div class="tile">
-  <p>
-    <span class="tile_title"><%= post.title %></span> <span class=""><%= time_ago_in_words(post.created_at) %> ago</span>
+  <%= link_to(post_path(post)) do %>
+    <p class="title">
+      <%= post.title %>
+    </p>
+  <% end %>
+  <%= render 'info', post: post %>
+  <p class="post_sum">
+    <%= truncate(post.content, length: 500, seperator: ' ') %>
   </p>
 </div>

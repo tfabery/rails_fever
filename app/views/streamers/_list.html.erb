@@ -1,10 +1,14 @@
-<div class="col-md-4">
-  <%= link_to streamer_path(object) do %>
-    <div class="stream_logo">
-      <%= image_tag(object.logo) %>
-    </div>
-    <p>
-      <%= object.name %>
-    </p>
+<div class="col-md-4 list-wrap">
+  <div class="list">
+    <%= link_to streamer_path(object) do %>
+      <div class="stream_logo">
+        <%= image_tag(object.logo) %>
+      </div>
+      <div class="stream_name">
+        <p>
+          <%= object.name %>
+        </p>
+      </div>
     <% end %>
+  </div>
 </div>

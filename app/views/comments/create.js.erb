@@ -1,1 +1,1 @@
-$('#comments').html('<%= j render partial: "comments/comment", collection: @post.comments.order(created_at: :asc) %>');
+$('#comments').html('<%= j render partial: "comments/form" %><%= j render partial: "comments/comment", collection: @post.comments.order(created_at: :asc) %>');

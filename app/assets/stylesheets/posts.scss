@@ -1,7 +1,51 @@
 .tile {
-  width: 100%;
+  margin: 0.2em 1em;
+
+  p {
+    margin-bottom: 0;
+  }
+
+  .post_info {
+    margin-left: 2em;
+  }
+
+  .post_sum {
+    font-size: 1.5em;
+    margin-left: 1.5em;
+  }
+
 }
 
-.tile_title {
+.post {
+  p {
+    margin-bottom: 0;
+  }
+}
+
+.user {
+  color: #E74C3C;
+}
+
+.title {
   font-size: 3em;
+}
+
+.content {
+  padding: 0.3em;
+  background-color: rgba(44, 62, 80, 0.2);
+  border: 0.05em solid black;
+  border-radius: 0.2em;
+  font-size: 1.25em;
+}
+
+.post_info {
+  font-size: 1em;
+}
+
+.post-form {
+  textarea {
+    width: 100%;
+    height: 30em;
+    border-radius: 0.2em;
+  }
 }

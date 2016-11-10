@@ -1,5 +1,6 @@
 <%= form_for [@commentable, @comment], id: 'comment_form' , remote: true do |f|%>
-  <%= f.label :content %>
-  <%= f.text_field :content %>
-  <%= f.submit 'Post comment' %>
+  <%= f.text_area :content %>
+  <div class="">
+    <%= f.submit 'Save' %>
+  </div>
 <% end %>

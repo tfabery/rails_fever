@@ -22,7 +22,7 @@
       </form>
       <% end %>
       <ul class="nav navbar-nav navbar-right">
-        <% if @posts || @post %>
+        <% if !@streams %>
           <li><%= link_to "Streams", streamers_path %></li>
         <% end %>
         <% if @streams || @stream %>

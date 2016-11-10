@@ -11,15 +11,21 @@
 
   <body>
     <%= render 'layouts/navbar' %>
-    <div class="container" align="middle">
+    <div class="container flash" align="middle">
       <% flash.each do |key, value| %>
         <%= content_tag(:p, value, class: key) %>
       <% end %>
     </div>
 
-    <div class="container">
-      <%= yield %>
-    </div>
+    <% if @stream %>
+      <div class="container-fluid">
+        <%= yield %>
+      </div>
+    <% else %>
+      <div class="container">
+        <%= yield %>
+      </div>
+    <% end %>
 
     <footer class="footer">
       <div class="container">
