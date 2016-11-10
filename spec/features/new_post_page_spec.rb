@@ -2,26 +2,26 @@ require 'rails_helper'
 
 describe 'new post creating process' do
   it "create a post" do
-    visit log_in_path
+    visit '/'
+    click_on 'Login'
     user = FactoryGirl.create(:user)
-    fill_in 'username', :with => 'admin'
-    fill_in 'password', :with => 'password'
+    fill_in 'user_login', :with => 'admin'
+    fill_in 'user_password', :with => 'password'
     click_on 'Log in'
-    click_on 'New Post'
-    fill_in 'Title', with: 'test post'
-    fill_in 'Content', with: 'test content'
-    click_on 'Post'
+    first(:input, '.button_to').click
+    fill_in 'post_title', with: 'test post'
+    fill_in 'post_content', with: 'test content'
+    click_on 'Save'
     expect(page).to have_content 'test post'
   end
 
   it "Error pops up when creating post with empty fields" do
-    visit log_in_path
+    visit '/'
+    click_on 'Login'
     user = FactoryGirl.create(:user)
-    fill_in 'username', :with => 'admin'
-    fill_in 'password', :with => 'password'
+    fill_in 'user_login', :with => 'admin'
+    fill_in 'user_password', :with => 'password'
     click_on 'Log in'
-    click_on 'New Post'
-    click_on 'Post'
-    expect(page).to have_content 'errors'
+    expect(page).to have_content "Title can't be blank, Content can't be blank"
   end
 end

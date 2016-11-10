@@ -2,29 +2,32 @@ require 'rails_helper'
 
 describe 'Log in/out process' do
   it "logs in with correct information" do
-    visit log_in_path
+    visit '/'
+    click_on 'Login'
     user = FactoryGirl.create(:user)
-    fill_in 'username', :with => 'admin'
-    fill_in 'password', :with => 'password'
+    fill_in 'user_login', :with => 'admin'
+    fill_in 'user_password', :with => 'password'
     click_on 'Log in'
-    expect(page).to have_content 'you have been logged in'
+    expect(page).to have_content 'Logout'
   end
 
   it "Error pops up when trying to log in with incorrect information" do
-    visit log_in_path
-    fill_in 'username', :with => 'admin'
-    fill_in 'password', :with => 'password'
+    visit '/'
+    click_on 'Login'
+    fill_in 'user_login', :with => 'admin'
+    fill_in 'user_password', :with => 'password'
     click_on 'Log in'
-    expect(page).to have_content 'Please try again'
+    expect(page).to have_content 'Invalid Login or password'
   end
 
   it "Log out successfully" do
-    visit log_in_path
+    visit '/'
+    click_on 'Login'
     user = FactoryGirl.create(:user)
-    fill_in 'username', :with => 'admin'
-    fill_in 'password', :with => 'password'
+    fill_in 'user_login', :with => 'admin'
+    fill_in 'user_password', :with => 'password'
     click_on 'Log in'
-    click_on 'Log out'
-    expect(page).to have_content "You've been logged out successfully"
+    click_on 'Logout'
+    expect(page).to have_content "Login"
   end
 end
