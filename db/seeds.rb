@@ -5,7 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-users = User.create(username: 'admin', password: 'password')
+users = User.create(username: 'admin', password: 'password', email: 'admin@admin.com')
 streamers = Streamer.create ([
   {name: 'Faker', channel_name: 'fakerlivestream'},
   {name: 'Dyrus', channel_name: 'tsm_dyrus'},
@@ -14,3 +14,11 @@ streamers = Streamer.create ([
   {name: 'Box Box', channel_name: 'flosd'},
   {name: 'BunnyFuFuu', channel_name: 'bunnyfufuu'}
 ])
+rooms = Room.create([
+  {streamer_id: 1},
+  {streamer_id: 2},
+  {streamer_id: 3},
+  {streamer_id: 4},
+  {streamer_id: 5},
+  {streamer_id: 6}
+  ])

@@ -8,6 +8,8 @@ class User < ApplicationRecord
 
  has_many :posts
  has_many :comments
+ has_many :messages
+ has_many :rooms, through: :messages
 
  def self.find_for_database_authentication(warden_conditions)
     conditions = warden_conditions.dup

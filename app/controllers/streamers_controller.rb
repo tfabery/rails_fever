@@ -19,6 +19,8 @@ class StreamersController < ApplicationController
 
   def show
     @stream = Streamer.find(params['id'])
+    @room = Room.find_by(streamer_id: params['id'])
+    @message = Message.new
   end
 
 private

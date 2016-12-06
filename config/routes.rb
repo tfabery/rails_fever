@@ -15,4 +15,9 @@ Rails.application.routes.draw do
   end
 
   resources :streamers
+
+  resources :messages, only: [:create]
+
+  mount ActionCable.server => '/cable'
+
 end

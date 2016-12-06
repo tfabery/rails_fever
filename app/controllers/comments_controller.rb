@@ -7,12 +7,13 @@ before_action :find_commentable
 
   def create
     @user = current_user
+    @post = Post.find(params[:post_id])
     @comment = @commentable.comments.new(comment_params)
     @comment.user_id = @user.id
     if @comment.save
       flash[:notice] = "Comment has been added"
       respond_to do |format|
-        format.html { redirect_to :back }
+        format.html { redirect_back(fallback_location: post_url(@post)) }
         format.js
       end
     else

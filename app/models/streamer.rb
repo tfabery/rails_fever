@@ -1,5 +1,6 @@
 class Streamer < ActiveRecord::Base
   validates_presence_of :channel_name, :name
+  has_one :room
 
   def self.live_check(streamers)
     channels = ''
